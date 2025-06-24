@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Paneli</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 50px;
+        }
+        .panel {
+            background: white;
+            padding: 30px;
+            margin: auto;
+            border-radius: 15px;
+            width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="panel">
+    <h2>Admin Paneliga Xush Kelibsiz</h2>
+    <a href="{{ url_for('idlar') }}">📄 Test ID lar ro'yxati</a>
+    <a href="{{ url_for('admin_logout') }}">🚪 Chiqish</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #b2fefa, #0ed2f7);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: #ffffffee;
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .question {
+      background: #f7f9fc;
+      border-radius: 12px;
+      padding: 20px 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .question:hover {
+      transform: translateY(-2px);
+    }
+
+    .question p {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .options {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .options input[type="radio"] {
+      display: none;
+    }
+
+    .options label {
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: #e0e0e0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      border: 2px solid transparent;
+    }
+
+    .options label:hover {
+      background-color: #d2f8d2;
+    }
+
+    .options input[type="radio"]:checked + label {
+      background-color: #4CAF50;
+      color: white;
+      border: 2px solid #388e3c;
+      box-shadow: 0 2px 8px rgba(0, 128, 0, 0.2);
+    }
+
+    button {
+      background-color: #00c853;
+      color: white;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      display: block;
+      margin: 40px auto 0;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #00b248;
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      .question p {
+        font-size: 16px;
+      }
+      .options label {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      button {
+        font-size: 16px;
+        padding: 12px 30px;
+      }
+    }
+  </style>
+
+  <script>
+    function disableChoices(name) {
+      const radios = document.getElementsByName(name);
+      for (const radio of radios) {
+        if (!radio.checked) radio.disabled = true;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>{{ name }} ({{ role }}) uchun test</h2>
+    <form method="POST" action="/thanks">
+      <input type="hidden" name="name" value="{{ name }}">
+      <input type="hidden" name="step" value="{{ step }}">
+      <input type="hidden" name="test_id" value="{{ test_id }}">
+
+      {% for savol in questions %}
+        {% set idx = loop.index0 %}
+        <div class="question">
+          <p>{{ loop.index }}. {{ savol }}</p>
+          <div class="options">
+            <input type="radio" id="q{{ idx }}_ha" name="q{{ idx }}" value="Ha" required onclick="disableChoices('q{{ idx }}')">
+            <label for="q{{ idx }}_ha">Ha</label>
+
+            <input type="radio" id="q{{ idx }}_yoq" name="q{{ idx }}" value="Yo'q" onclick="disableChoices('q{{ idx }}')">
+            <label for="q{{ idx }}_yoq">Yo‘q</label>
+          </div>
+        </div>
+      {% endfor %}
+
+      <button type="submit">Testni yakunlash</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Test IDlar Ro‘yxati</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      padding: 40px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 12px 15px;
+      margin: 10px 0;
+      background: #f7f7f7;
+      border-radius: 8px;
+      transition: all 0.2s ease-in-out;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li:hover {
+      background-color: #e2e8f0;
+      transform: scale(1.01);
+    }
+    a {
+      text-decoration: none;
+      color: #1e90ff;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #2c3e50;
+    }
+    .back {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .back a {
+      color: white;
+      background: #4CAF50;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+    .back a:hover {
+      background: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📋 Testlar Ro‘yxati</h2>
+    <ul>
+      {% for test_id, pair in ids %}
+        <li>
+          <span>{{ pair }}</span>
+          <a href="{{ url_for('id_natija', test_id=test_id) }}">Natijani ko‘rish</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="back">
+      <a href="{{ url_for('index') }}">← Bosh sahifaga qaytish</a>
+    </div>
+  </div>
+</body>
+</html>

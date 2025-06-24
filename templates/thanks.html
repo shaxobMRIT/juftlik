@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Rahmat!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+    }
+
+    h2 {
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .next-step {
+      margin-top: 25px;
+      font-style: italic;
+      color: #666;
+    }
+
+    .emoji {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #388E3C;
+    }
+
+    .test-id {
+      font-size: 16px;
+      margin-top: 10px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="emoji">✅</div>
+    <h2>Rahmat, {{ name }}!</h2>
+    <p>Siz testni muvaffaqiyatli yakunladingiz.</p>
+    <div class="test-id">Test ID: <strong>{{ test_id }}</strong></div>
+
+    {% if show_partner_button %}
+      <div class="next-step">Endi iltimos, juftingiz ham ushbu testni to‘ldirsin:</div>
+      <a href="{{ url_for('partner') }}" class="button">➡ Juftim testni boshlasin</a>
+    {% endif %}
+  </div>
+</body>
+</html>

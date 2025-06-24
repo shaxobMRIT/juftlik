@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Juftlik Test Tizimi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      padding: 50px;
+      margin: 0;
+      text-align: center;
+    }
+    .box {
+      background: #fff;
+      padding: 40px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .nav-link {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #0a58ca;
+      font-weight: bold;
+    }
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    h3 {
+      margin-top: 50px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>💑 Juftlik Moslik Testi</h2>
+    <form method="POST">
+      <input type="text" name="name" placeholder="Ismingiz" required>
+      <select name="role" required>
+        <option value="">Rolingizni tanlang</option>
+        <option value="Er">Er</option>
+        <option value="Ayol">Ayol</option>
+      </select>
+      <input type="text" name="partner_name" placeholder="Juftingiz ismi" required>
+      <button type="submit">❤️ Testni boshlash</button>
+    </form>
+
+    <h3>📋 Test natijasini ko‘rish</h3>
+    <form action="{{ url_for('see_result') }}" method="post">
+      <input type="text" name="test_id" placeholder="Sizga berilgan ID ni kiriting" required>
+      <button type="submit">🔍 Natijani ko‘rish</button>
+    </form>
+
+    <a class="nav-link" href="{{ url_for('idlar') }}">📂 Barcha IDlar ro‘yxati</a>
+  </div>
+</body>
+</html>
